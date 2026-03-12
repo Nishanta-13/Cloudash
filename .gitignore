@@ -1,0 +1,16 @@
+# dependencies
+node_modules/
+
+# env files
+.env
+
+# uploads
+Backend/uploads/
+
+# mac
+.DS_Store
+
+# build
+dist
+build
+Backend/ServiceAccountKey.json
