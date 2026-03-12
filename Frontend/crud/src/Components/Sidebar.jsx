@@ -20,7 +20,7 @@ export default function Sidebar() {
   useEffect(() => {
     const fetchSections = async () => {
       try {
-        const res = await axios.get('http://localhost:5050/api/section');
+        const res = await axios.get('https://cloudash-backend.onrender.com/api/section');
         setSections(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
         console.error('Failed to fetch sections:', error);
@@ -36,7 +36,7 @@ export default function Sidebar() {
       const fetchFolders = async () => {
         setLoadingFolders(true);
         try {
-          const res = await axios.get(`http://localhost:5050/api/folder?sectionId=${currentSectionId}`);
+          const res = await axios.get(`https://cloudash-backend.onrender.com/api/folder?sectionId=${currentSectionId}`);
           setFolders(Array.isArray(res.data) ? res.data : []);
           setError(null);
         } catch (error) {

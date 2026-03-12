@@ -15,8 +15,8 @@ const FoldersPage = () => {
   const fetchData = async () => {
     try {
       const [sectionRes, foldersRes] = await Promise.all([
-        axios.get(`http://localhost:5050/api/section/${sectionId}`),
-        axios.get(`http://localhost:5050/api/folder?sectionId=${sectionId}`)
+        axios.get(`https://cloudash-backend.onrender.com/api/section/${sectionId}`),
+        axios.get(`https://cloudash-backend.onrender.com/api/folder?sectionId=${sectionId}`)
       ]);
       setSection(sectionRes.data);
       setFolders(foldersRes.data);
@@ -38,7 +38,7 @@ const FoldersPage = () => {
     if (!newFolderName.trim()) return;
 
     try {
-      await axios.post('http://localhost:5050/api/folder', {
+      await axios.post('https://cloudash-backend.onrender.com/api/folder', {
         name: newFolderName,
         sectionId
       });
@@ -51,13 +51,13 @@ const FoldersPage = () => {
 
   const deleteFolder = async (id) => {
     if (window.confirm('Delete this folder and all its files?')) {
-      await axios.delete(`http://localhost:5050/api/folder/${id}`);
+  await axios.delete(`https://cloudash-backend.onrender.com/api/folder/${id}`);
       fetchData();
     }
   };
 
   const saveEdit = async () => {
-    await axios.put(`http://localhost:5050/api/folder/${editingId}`, { name: editName });
+  await axios.put(`https://cloudash-backend.onrender.com/api/folder/${editingId}`, { name: editName });
     setEditingId(null);
     fetchData();
   };

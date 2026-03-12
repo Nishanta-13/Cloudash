@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_BASE } from '../config/api';
 import { useNavigate } from 'react-router-dom';
 
 const SectionsPage = () => {
@@ -17,7 +18,7 @@ const SectionsPage = () => {
     const fetchSections = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('http://localhost:5050/api/section');
+  const res = await axios.get(`${API_BASE}/api/section`);
         if (Array.isArray(res.data)) {
           setSections(res.data);
         } else {
@@ -45,10 +46,10 @@ const SectionsPage = () => {
     if (!newSectionName.trim()) return;
     
     try {
-      await axios.post('http://localhost:5050/api/section', { name: newSectionName });
+  await axios.post(`${API_BASE}/api/section`, { name: newSectionName });
       setNewSectionName('');
       // Re-fetch to ensure we have the latest data
-      const res = await axios.get('http://localhost:5050/api/section');
+  const res = await axios.get(`${API_BASE}/api/section`);
       setSections(res.data);
     } catch (err) {
       setError('Failed to add section');
@@ -61,7 +62,7 @@ const SectionsPage = () => {
     if (!window.confirm('Delete this section and all its folders?')) return;
     
     try {
-      await axios.delete(`http://localhost:5050/api/section/${id}`);
+  await axios.delete(`${API_BASE}/api/section/${id}`);
       setSections(prev => prev.filter(section => section._id !== id));
     } catch (err) {
       setError('Failed to delete section');
@@ -77,7 +78,7 @@ const SectionsPage = () => {
 
   const saveEdit = async () => {
     try {
-      await axios.put(`http://localhost:5050/api/section/${editingId}`, { name: editName });
+    await axios.put(`${API_BASE}/api/section/${editingId}`, { name: editName });
       setSections(prev => prev.map(section => 
         section._id === editingId ? { ...section, name: editName } : section
       ));

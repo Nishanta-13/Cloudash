@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const API_URL = 'http://localhost:5050/api/file';
+const API_URL = 'https://cloudash-backend.onrender.com/api/file';
 
 const FilesGalleryPage = () => {
   

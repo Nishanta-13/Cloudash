@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { FiFolder, FiSearch, FiEdit2, FiPlus, FiTrash2, FiChevronDown, FiChevronRight } from 'react-icons/fi';
 
-const API_URL = 'http://localhost:5050/api';
+import { API_BASE } from '../config/api';
+
+const API_URL = `${API_BASE}/api`;
 
 const FolderPage = () => {
   const [sections, setSections] = useState([]);
